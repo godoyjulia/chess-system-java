@@ -3,6 +3,8 @@ package boardgame;
 import java.util.ArrayList;
 import java.util.List;
 
+import chess.ChessPiece;
+
 public class Board {
 	
 	private int rows;
@@ -39,4 +41,10 @@ public class Board {
 		return pieces[position.getRow()][position.getColumn()];
 	}
 	
+	public void placePiece(Piece piece, Position position) {
+		int row = position.getRow();
+		int column = position.getColumn();
+		pieces[row][column] = piece;
+		piece.position = position;
+	}
 }
