@@ -52,6 +52,19 @@ public class Board {
 		piece.position = position;
 	}
 	
+	public Piece removePiece(Position position) {
+		if (!positionExists(position)) {
+			throw new BoardException("Position not on the board");
+		}
+		if (piece(position) == null) { //nao tem peça nessa posição
+			return null;
+		}
+		Piece aux = piece(position);
+		aux.position = null;//peça retirada do tabuleiro, nao tem mais posicao
+		pieces[position.getRow()][position.getColumn()] = null; //nao tem mais peca nessa posicao da matriz
+		return aux;
+	}
+	
 	private boolean positionExists(int row, int column) {
 		return row >= 0 && row < rows && column >= 0 && column < columns; 
 	}
